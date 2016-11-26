@@ -14,7 +14,7 @@ void printJZ(double a[][N],int m,int n)//打印矩阵
     printf("\n");
 }
 
-void changeH(double a[][N],int i,int j,int n)//交换两行（i和j）n为列数；
+void changeH(double a[][N],int i,int j,int n)//交换两行（i和j）n为矩阵总列数；
 {
     double t;
     int k;
@@ -26,7 +26,7 @@ void changeH(double a[][N],int i,int j,int n)//交换两行（i和j）n为列数；
     }
 }
 
-void addH(double a[][N],int m,int n,int firstm,int firstn)//矩阵行之间加法，m，n为行数和列数，后两个为起始行列数。做完此步骤使得起始数下面的数均为零；
+void addH(double a[][N],int m,int n,int firstm,int firstn)//矩阵行之间加法，m，n为行数和列数，后两个为起始行列数。做完此步骤使得每行左起第一个非零元下面的数均为零；
 {
     int i,j;
     double t;
@@ -40,7 +40,7 @@ void addH(double a[][N],int m,int n,int firstm,int firstn)//矩阵行之间加法，m，n
     }
 }
 
-void addH2(double a[][N],int m,int n,int firstm,int firstn)
+void addH2(double a[][N],int m,int n,int firstm,int firstn)//矩阵行进行加法，从下往上。做完此步骤使得1是它们所在列的唯一非零元；
 {
     int i,j;
     double t;
@@ -54,7 +54,7 @@ void addH2(double a[][N],int m,int n,int firstm,int firstn)
     }
 }
 
-int zeroL(double a[][N],int m,int n,int firstn,int firstm) //判断零。
+int zeroL(double a[][N],int m,int n,int firstn,int firstm) //判断此列均为全零元列；
 {
     int t=0;
     int i;
@@ -67,10 +67,10 @@ int zeroL(double a[][N],int m,int n,int firstn,int firstm) //判断零。
     else return 0;
 }
 
-void FIRSTNOZERO(double a[][N],int n,int firstm,int firstn)
+void FIRSTNOZERO(double a[][N],int n,int firstm,int firstn)//使此列的非零元在零元前面
 {
     int i;
-    if(a[firstm][firstn]==0)//是第一行第一列的数不为零；
+    if(a[firstm][firstn]==0)
     {
         for(i=firstm; i<n; i++)
         {
@@ -84,7 +84,7 @@ void FIRSTNOZERO(double a[][N],int n,int firstm,int firstn)
     }
 }
 
-void first2first(double a[][N],int m,int n)
+void first2first(double a[][N],int m,int n)//使得每一行左起第一个非零元为1；
 {
     int i,j,tj;
     double t;
@@ -106,7 +106,7 @@ void first2first(double a[][N],int m,int n)
     }
 }
 
-void ZJX(double a[][N],int m,int n)
+void ZJX(double a[][N],int m,int n)//最简形的化简，和addH2配合使用
 {
     int i,j,firstm,firstn,t=0;
     for(i=m-1; i>=0; i--)
@@ -128,7 +128,7 @@ void ZJX(double a[][N],int m,int n)
     }
 }
 
-void Dezero(double a[][N],int m,int n)//使-0变为0；
+void Dezero(double a[][N],int m,int n)//使-0变为0；目的是为了输出美观
 {
     int i,j;
     for(i=0; i<m; i++)

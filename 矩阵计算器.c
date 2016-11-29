@@ -214,15 +214,14 @@ int zeroPow(double a[][N],int m,int n) //判断行是否全0，用于求秩
     int j,t=0;
     for(j=0; j<n; j++)
     {
-        if(a[m][j]!=0)
+        if(a[m-1][j]!=0)
         {
             t=1;
         }
-        break;
     }
-    if(t=0)
+    if(t==0)
         return 0;
-    if(t=1)
+    if(t==1)
         return 1;
 }
 
@@ -303,7 +302,7 @@ void Dezero(double a[][N],int m,int n)//使-0变为0；目的是为了输出美观
 void zjx_qn()
 {
     int i,j,m,n;
-    int count=0;
+    int count=1;
     int firstm=0,firstn=0;
     double b[N][N]= {0};
     double c[N][N]= {0};
@@ -368,7 +367,6 @@ void zjx_qn()
     Dezero(a,m,2*n);
     printJZ(a,m,n);
 
-
     //打印逆矩阵部分
     for(i=0; i<m; i++)
     {
@@ -387,7 +385,7 @@ void zjx_qn()
 
     }
 
-    if (zeroPow(b,m,n)!=0) count=1; //判断最后一行是否为零，若为零最没有逆；
+    if (zeroPow(b,m,n)==1) count=0; //判断最后一行是否为零，若为零最没有逆；
     if(m!=n)
     {
         puts("不是方阵我不求逆哼 (0*0) \n");
@@ -396,7 +394,6 @@ void zjx_qn()
     {
         puts("都不满秩求啥子逆哟 (0o0) \n");
     }
-
     else
     {
         puts("这是你的逆矩阵 不，是你的逆矩阵(^o^) ");
